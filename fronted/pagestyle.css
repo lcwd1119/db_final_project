@@ -1,0 +1,943 @@
+@charset "UTF-8";
+/*@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700;800;900&display=swap');*/
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap");
+* {
+  font-family: "Noto Sans TC", sans-serif;
+}
+
+/*管理員分割面板*/
+.black_background {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 5;
+}
+
+.grey_background {
+  background: whitesmoke;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  overflow: auto;
+}
+
+.container_sp {
+  background: linear-gradient(0deg, #ffffff, white);
+}
+
+.classroomlist {
+  /*width: 100%;
+  height: 100%;*/
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+/*教室列表CSS*/
+.card_spec {
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+  transition: ease 0.5s;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.card_spec:hover {
+  transform: scale(1.08);
+}
+
+.card, h1 {
+  text-align: center;
+  /*margin-top: 20px;*/
+}
+
+.card_show {
+  position: fixed;
+  left: 6%;
+  top: 10%;
+  width: 88%;
+  height: 86%;
+  z-index: 10;
+  animation-name: example;
+  animation-duration: 1s;
+}
+.card_show .card_body {
+  margin: 1rem;
+}
+.card_show .close_button {
+  position: absolute;
+  right: -20px;
+  top: -10px;
+  width: 50px;
+  height: 50px;
+  background: #FFF;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.card_show .close_button span {
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  background: #1863FF;
+  border-radius: 4px;
+  transition: 0.5s;
+  transform: rotate(315deg);
+}
+.card_show .close_button span:nth-child(1) {
+  transform: rotate(45deg);
+  width: 40px;
+}
+
+.card_edit, .card_request {
+  position: fixed;
+  left: calc(50% - 100px);
+  top: 30%;
+  width: 200px;
+  height: 200px;
+  z-index: 10;
+  animation-name: example;
+  animation-duration: 1s;
+}
+.card_edit .card_body, .card_request .card_body {
+  margin: 1rem;
+}
+.card_edit .card_body button, .card_request .card_body button {
+  margin: 2px;
+  width: 100%;
+}
+
+.card_reserve {
+  position: fixed;
+  left: 6%;
+  top: 10%;
+  width: 88%;
+  height: 86%;
+  z-index: 10;
+  padding: 0;
+  animation-name: example;
+  animation-duration: 1s;
+  overflow: auto;
+}
+.card_reserve .card_body {
+  margin: 1rem;
+  height: auto;
+  background: lightgreen;
+  border-radius: 15px;
+  overflow: unset;
+  padding: 1rem;
+}
+.card_reserve .card_end {
+  height: 100%;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: rgba(209, 254, 184, 0.8);
+  border-radius: 15px;
+  overflow: unset;
+}
+.card_reserve .card_end button {
+  width: 100%;
+  height: 100%;
+  background-color: lightblue;
+  font-size: large;
+}
+.card_reserve .close_button {
+  position: absolute;
+  right: 20px;
+  top: 0px;
+  width: 50px;
+  height: 50px;
+  z-index: 100;
+  background: #FFF;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.card_reserve .close_button span {
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  background: #1863FF;
+  border-radius: 4px;
+  transition: 0.5s;
+  transform: rotate(315deg);
+}
+.card_reserve .close_button span:nth-child(1) {
+  transform: rotate(45deg);
+  width: 40px;
+}
+
+@keyframes example {
+  0% {
+    opacity: 0;
+  }
+  /*25%  {
+      background-color: yellow;
+  }
+  50%  {
+      background-color: blue;
+  }*/
+  100% {
+    opacity: 1;
+  }
+}
+.middle {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.circle {
+  border-radius: 10px;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* 網頁捲軸【寬度】 */
+::-webkit-scrollbar {
+  width: 10px;
+  -webkit-border-radius: 10px;
+  display: none;
+}
+
+/* 網頁捲軸【背景】顏色 */
+::-webkit-scrollbar-track {
+  background: #448fc8;
+}
+
+/* 網頁捲軸【把手】顏色 */
+::-webkit-scrollbar-thumb {
+  background: #fff;
+}
+
+/* 網頁捲軸【滑過時】把手的顏色 */
+::-webkit-scrollbar-thumb:hover {
+  background: #e1e5e8;
+}
+
+.up_button {
+  position: absolute;
+  right: 100px;
+  top: 200px;
+  width: 50px;
+  height: 50px;
+  background: #FFF;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.up_button span {
+  position: absolute;
+  width: 4px;
+  height: 40px;
+  background: black;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+.up_button span:nth-child(1) {
+  transform: translateY(-10px) rotate(45deg);
+  height: 25px;
+  left: 15px;
+}
+.up_button span:nth-child(2) {
+  transform: translateY(-10px) rotate(135deg);
+  height: 25px;
+  right: 15px;
+}
+
+#scroll-top {
+  position: fixed;
+  top: -120%;
+  right: 2rem;
+  /*padding:.5rem 1.5rem;*/
+  font-size: 4rem;
+  border-radius: 0.5rem;
+  transition: 0.5s linear;
+  z-index: 1;
+}
+
+#scroll-top.active {
+  top: calc(100% - 8rem);
+}
+
+/*毛玻璃效果*/
+.body_spec, .classroomlist::before {
+  background-color: #f0f0f0;
+}
+
+.glass {
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  /* 其他樣式 */
+}
+
+/*.glass::before {
+    position: absolute;
+    top:0; right:0; bottom:0; left:0;
+    backdrop-filter: blur(20px);
+    z-index: -1;
+    margin: -30px;
+一般教室	E化教室	B10	50	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+一般教室	E化教室	B12	50	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+一般教室	E化教室	INSB07	30	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+視聽教室	E化教室	INS303	60	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+研究生教室	E化教室	INS407	15	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+研討室	E化教室	INS409	15	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+視聽教室	階梯教室	INS101	70	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+視聽教室	階梯教室	INS105	70	數位多功能講桌(含主機、投影機、擴大機、麥克風、喇叭、布幕)
+個人電腦實驗室	教學實驗室	INS203	80	投影機、擴大機、麥克風、喇叭、布幕、81台主機
+3D多媒體教學實驗室	教學實驗室	INS205	25	投影機、擴大機、麥克風、喇叭、布幕、23台mac主機
+電子電路/數位邏輯教學實驗室/VLSI設計實習室/RFID資訊應用與安全實驗室	教學實驗室	INS301	53	投影機、擴大機、麥克風、喇叭、布幕、53台主機
+物聯網實驗室	教學實驗室	電機一館314	65	擴大機、麥克風、喇叭、65台主機
+
+}*/
+.admin1 {
+  padding-top: 100px;
+  padding-left: 40px;
+}
+.admin1 .file_border {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  width: calc(100% - 40px);
+  height: 95%;
+}
+.admin1 .file_border table {
+  width: 100%;
+  position: relative;
+  margin: 0;
+  border-radius: 6px;
+}
+.admin1 .file_border table thead tr th {
+  text-align: center;
+  border-bottom: 3px solid #969696;
+  width: 10%;
+  border-radius: 6px;
+  min-width: 60px;
+}
+.admin1 .file_border table thead tr th:nth-child(2) {
+  width: 40%;
+}
+.admin1 .file_border table thead tr th:nth-child(3) {
+  width: 40%;
+}
+.admin1 .file_border table thead tr th:last-child {
+  width: 10%;
+  text-align: left;
+  padding-left: 18px;
+}
+.admin1 .file_border table tbody tr {
+  border-bottom: 3px solid #969696;
+}
+.admin1 .file_border table tbody tr td {
+  text-align: center;
+  width: auto;
+  overflow: hidden;
+}
+
+.admin2 {
+  padding-top: 100px;
+  padding-left: 40px;
+}
+.admin2 .file_border {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  width: calc(100% - 40px);
+  height: 95%;
+}
+.admin2 .file_border table {
+  width: 100%;
+  position: relative;
+  margin: 0;
+  border-radius: 6px;
+}
+.admin2 .file_border table thead tr th {
+  text-align: center;
+  border-bottom: 3px solid #969696;
+  width: 8%;
+  border-radius: 6px;
+  min-width: 30px;
+}
+.admin2 .file_border table thead tr th:nth-child(5) {
+  text-align: left;
+  width: 60%;
+}
+.admin2 .file_border table thead tr th:last-child {
+  width: 8%;
+  text-align: left;
+  padding-left: 18px;
+}
+.admin2 .file_border table tbody tr {
+  border-bottom: 3px solid #969696;
+}
+.admin2 .file_border table tbody tr td {
+  text-align: center;
+  width: auto;
+  overflow: hidden;
+}
+.admin2 .file_border table tbody tr td:nth-child(5) {
+  text-align: left;
+}
+
+.admin3 {
+  padding-top: 100px;
+  padding-left: 40px;
+}
+.admin3 .file_border {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  width: calc(100% - 40px);
+  height: 95%;
+}
+.admin3 .file_border table {
+  width: 100%;
+  position: relative;
+  margin: 0;
+  border-radius: 6px;
+}
+.admin3 .file_border table thead tr th {
+  text-align: center;
+  border-bottom: 3px solid #969696;
+  width: 5%;
+  border-radius: 6px;
+  min-width: 40px;
+}
+.admin3 .file_border table thead tr th:nth-child(2) {
+  width: 10%;
+}
+.admin3 .file_border table thead tr th:nth-child(3) {
+  text-align: left;
+  width: 20%;
+}
+.admin3 .file_border table thead tr th:nth-child(4) {
+  width: 20%;
+}
+.admin3 .file_border table thead tr th:nth-child(5) {
+  width: 10%;
+}
+.admin3 .file_border table thead tr th:last-child {
+  width: 10%;
+  text-align: left;
+  padding-left: 18px;
+}
+.admin3 .file_border table tbody tr {
+  border-bottom: 3px solid #969696;
+}
+.admin3 .file_border table tbody tr td {
+  text-align: center;
+  width: auto;
+  overflow: hidden;
+}
+.admin3 .file_border table tbody tr td:nth-child(3) {
+  text-align: left;
+}
+
+.edit_button {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  background-color: rgba(150, 150, 150, 0.2);
+  border-radius: 50px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.edit_button span {
+  width: 6px;
+  height: 6px;
+  border-radius: 10px;
+  background-color: black;
+  position: absolute;
+  top: 10px;
+}
+.edit_button span:nth-child(2) {
+  top: 20px;
+}
+.edit_button span:nth-child(3) {
+  top: 30px;
+}
+.edit_button:hover {
+  background-color: #969696;
+}
+
+.request_button {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  left: 15px;
+  background-color: rgba(150, 150, 150, 0.2);
+  border-radius: 50px;
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.request_button span {
+  width: 6px;
+  height: 6px;
+  border-radius: 10px;
+  background-color: black;
+  position: absolute;
+  top: 10px;
+}
+.request_button span:nth-child(2) {
+  top: 20px;
+}
+.request_button span:nth-child(3) {
+  top: 30px;
+}
+.request_button:hover {
+  background-color: #969696;
+}
+
+.table_button {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  align-content: center;
+  font-size: larger;
+  border-radius: 40px;
+  background-color: rgba(240, 240, 240, 0.3);
+  box-shadow: 1px 1px 1px 2px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.bi-pencil-square {
+  position: relative;
+  left: 1px;
+}
+
+.table_button:hover {
+  background-color: #f0f0f0;
+}
+
+.record table {
+  margin: 0;
+  border-radius: 6px;
+}
+.record table tr th {
+  border-bottom: 3px solid white;
+  width: 25%;
+  border-radius: 6px;
+}
+.record table tbody tr {
+  border-bottom: 3px solid white;
+  border-radius: 6px;
+  /*&:last-child {
+      border-bottom: 0px solid white;
+  }*/
+}
+.record table tbody tr td {
+  width: 25%;
+}
+
+.weekList {
+  padding-left: 0;
+}
+
+.no_display {
+  display: none;
+  transition: 0.1s;
+}
+
+.RWD_button {
+  display: none;
+}
+
+.show_left_top {
+  background: lightgreen;
+  color: black;
+}
+
+.show_left_bottom {
+  margin-top: 25px;
+  background: lightblue;
+  height: calc(80% - 13rem);
+}
+
+.show_right {
+  background: rgba(209, 254, 184, 0.8);
+  padding-right: 1.5rem;
+  margin: 1rem;
+}
+.show_right table {
+  width: 100%;
+  white-space: nowrap;
+  table-layout: auto;
+}
+.show_right table thead tr th {
+  border-bottom: 3px solid white;
+  width: 12.5%;
+  max-width: 200px;
+}
+.show_right table tbody tr {
+  border-bottom: 3px solid white;
+  width: auto;
+}
+.show_right table tbody tr:last-child {
+  border-bottom: 0px solid white;
+}
+
+.classInfo {
+  padding-right: 0;
+  overflow: auto;
+}
+
+.rows .container-fluid .info h3 {
+  float: left;
+  width: 40%;
+}
+.rows .container-fluid .info .right {
+  float: left;
+  width: 60%;
+  font-size: 1.5rem;
+}
+.rows .container-fluid .info .row {
+  margin-bottom: 0;
+  float: left;
+  width: 60%;
+}
+
+.scroll {
+  overflow: auto;
+}
+
+.paper {
+  background: linear-gradient(to left bottom, transparent 50%, rgba(0, 0, 0, 0.4) 0) no-repeat 100% 0/3em 1.73em, linear-gradient(-135deg, transparent 1.5em, #58a 0);
+}
+
+.toggle_button {
+  position: absolute;
+  right: 100px;
+  top: 100px;
+  width: 70px;
+  height: 70px;
+  background: #FFF;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.toggle_button span {
+  position: absolute;
+  width: 40px;
+  height: 4px;
+  background: #1863FF;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+.toggle_button span:nth-child(1) {
+  transform: translateY(-15px);
+  width: 25px;
+  left: 15px;
+}
+.toggle_button span:nth-child(2) {
+  transform: translateY(15px);
+  width: 15px;
+  left: 15px;
+}
+.toggle_button:hover span:nth-child(1) {
+  width: 40px;
+  left: 15px;
+}
+.toggle_button:hover span:nth-child(2) {
+  width: 40px;
+  left: 15px;
+}
+.toggle_button.active span {
+  width: 40px;
+  height: 4px;
+  background: #1863FF;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+.toggle_button.active span:nth-child(1) {
+  transform: translateY(0px) rotate(45deg);
+  width: 40px;
+}
+.toggle_button.active span:nth-child(2) {
+  transform: translateY(0px) rotate(315deg);
+  width: 40px;
+}
+.toggle_button.active span:nth-child(3) {
+  transform: translateX(60px);
+}
+
+.navbar {
+  /*top: 30px;
+  border-radius: 50px;
+  margin-right: 30px;
+  margin-left: 30px;*/
+  z-index: 5;
+}
+
+.navbar-toggler .toggle_button {
+  background: #FFF;
+  border-radius: 50px;
+  width: 50px;
+  height: 40px;
+  top: 8px;
+  right: 5px;
+}
+.navbar-toggler .toggle_button span {
+  position: absolute;
+  width: 30px;
+  height: 4px;
+  background: #1863FF;
+  border-radius: 4px;
+  transition: 0.5s;
+}
+.navbar-toggler .toggle_button span:nth-child(1) {
+  transform: translateY(-15px);
+  width: 20px;
+  left: 10px;
+}
+.navbar-toggler .toggle_button span:nth-child(2) {
+  transform: translateY(15px);
+  width: 15px;
+  left: 10px;
+}
+.navbar-toggler .toggle_button:hover span:nth-child(1) {
+  width: 30px;
+}
+.navbar-toggler .toggle_button:hover span:nth-child(2) {
+  width: 30px;
+}
+.navbar-toggler .toggle_button.active span {
+  /*width: 40px;
+  height: 4px;
+  background: #FFF;
+  border-radius: 4px;
+  transition: 0.5s;*/
+}
+.navbar-toggler .toggle_button.active span:nth-child(1) {
+  transform: translateY(0px) rotate(45deg);
+  width: 30px;
+}
+.navbar-toggler .toggle_button.active span:nth-child(2) {
+  transform: translateY(0px) rotate(315deg);
+  width: 30px;
+}
+.navbar-toggler .toggle_button.active span:nth-child(3) {
+  transform: translateX(60px);
+}
+
+.Test {
+  padding: 0;
+  margin: 10px;
+  border: 0;
+  width: 300px;
+  height: 150px;
+  background: rgba(209, 254, 184, 0.8);
+  border-radius: 10px;
+}
+.Test table {
+  width: 100%;
+  height: 100%;
+}
+.Test table thead tr th {
+  color: gray;
+  width: 50%;
+}
+.Test table thead tr th:nth-child(1) {
+  width: 30%;
+}
+.Test table thead tr th:nth-child(2) {
+  width: 20%;
+}
+.Test table tbody {
+  border-top: 2px solid gray;
+}
+.Test table tbody tr td {
+  color: gray;
+}
+
+.RWD_show {
+  display: none;
+}
+
+.RWD_noShow {
+  display: block;
+}
+
+@media (max-width: 991px) {
+  .sidebar {
+    left: -100%;
+  }
+  .sidebar.active {
+    position: relative;
+    height: 40%;
+    width: 100%;
+    left: 0%;
+  }
+
+  .content {
+    padding-left: 0rem;
+  }
+
+  .admin4 {
+    padding-left: 25px;
+  }
+  .admin4 .file_border {
+    margin: 15px;
+    border-radius: 10px;
+    background-color: white;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
+    position: relative;
+    float: left;
+    padding: 20px;
+    width: calc(100% - 55px);
+    height: 45%;
+    overflow: hidden;
+  }
+
+  .RWD_button {
+    display: block;
+  }
+
+  .RWD_word {
+    display: none;
+  }
+
+  .weekList {
+    padding-left: calc(var(--bs-gutter-x) * 0.5);
+  }
+
+  /*table tr td{
+      border: 1px solid #1c1f23!important;
+      width: 5rem;
+
+  }*/
+  .show_right {
+    margin-top: 25px;
+  }
+
+  .show_left_bottom {
+    height: auto;
+  }
+
+  .classInfo {
+    padding-right: calc(var(--bs-gutter-x) * 0.5);
+  }
+
+  /*.navbar{
+
+      top: 0px;
+      border-radius: 0px;
+      margin-right: 0px;
+      margin-left: 0px;
+
+  }
+  .navbar-toggler{
+      border-radius: 0;
+  }*/
+}
+@media (max-width: 767px) {
+  .RWD_show {
+    display: block;
+  }
+
+  .RWD_noShow {
+    display: none;
+  }
+
+  .admin1 {
+    padding-top: 70px;
+    padding-left: 10px;
+  }
+  .admin1 .file_border {
+    width: calc(100% - 10px);
+  }
+
+  .file_border {
+    width: calc(100% - 10px);
+  }
+
+  .admin3 {
+    padding-top: 70px;
+    padding-left: 10px;
+  }
+  .admin3 .file_border {
+    width: calc(100% - 10px);
+  }
+  .admin3 .file_border table th:nth-child(3) {
+    display: none;
+  }
+  .admin3 .file_border table td:nth-child(3) {
+    display: none;
+  }
+
+  .admin2 {
+    padding-top: 70px;
+    padding-left: 10px;
+  }
+  .admin2 .file_border {
+    width: calc(100% - 10px);
+  }
+  .admin2 .file_border table th:nth-child(5) {
+    display: none;
+  }
+  .admin2 .file_border table td:nth-child(5) {
+    display: none;
+  }
+
+  .card_show .card_body {
+    margin: 0.2rem;
+  }
+  .card_show .card_body .classInfo {
+    padding: 0;
+  }
+  .card_show .card_body .classInfo .show_left_top {
+    margin: 0;
+  }
+  .card_show .card_body .weekList {
+    padding: 0;
+  }
+
+  /*.card_show{
+      height: auto;
+  }*/
+}
+
+/*# sourceMappingURL=pagestyle.css.map */
