@@ -72,7 +72,48 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <?php
+
+                                $user = 'root';//資料庫使用者名稱
+                                $password = '';//資料庫的密碼
+                                try{
+                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
+                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
+                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                                }
+                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
+                                    Print "ERROR!:". $e->getMessage();
+                                    die();
+                                }
+
+                                $query = ("select * from bfshop");//select * from employee where ID = ?
+                                $stmt =  $db->prepare($query);
+                                $error= $stmt->execute();//$error= $stmt->execute(array($no));
+                                $result = $stmt->fetchAll();
+                                $shop_list = 
+                                '<tr>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>%s</td>
+                                    <td>
+                                        <div id="%s" class="request_button">
+                                            <span></span>
+                                            <span></span>
+                                            <span></span>
+                                        </div>
+                                    </td>
+                                </tr>';
+                                for($i=0; $i<count($result); $i++)
+                                {
+                                    echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID']);
+
+                                }
+                                /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
+                                $t1_SN='美而美基隆中正店';
+                                $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
+                            ?>
+                            <!-- <tr>
                                 <td>BFS<span class="RWD_show"></span>-01</td>
                                 <td>美而美基隆中正店</td>
                                 <td>5:00am<span class="RWD_show"></span>~1:00pm</td>
@@ -107,19 +148,7 @@
                                         <span></span>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>BFS<span class="RWD_show"></span>-01</td>
-                                <td>美而美基隆中正店</td>
-                                <td>5:00am<span class="RWD_show"></span>~1:00pm</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
+                            </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -145,7 +174,50 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <?php
+
+                                $user = 'root';//資料庫使用者名稱
+                                $password = '';//資料庫的密碼
+                                try{
+                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
+                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
+                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                                }
+                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
+                                    Print "ERROR!:". $e->getMessage();
+                                    die();
+                                }
+
+                                $query = ("select * from menu");//select * from employee where ID = ?
+                                $stmt =  $db->prepare($query);
+                                $error= $stmt->execute();//$error= $stmt->execute(array($no));
+                                $result = $stmt->fetchAll();
+                                $shop_list = 
+                                '<tr>
+                                <td>%d</td>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>
+                                    <div id="%d" class="request_button">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </td>
+                                </tr>';
+                                for($i=0; $i<count($result); $i++)
+                                {
+                                    echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['BreakfastShopID'],$result[$i]['FoodName'],$result[$i]['Price'],$result[$i]['Remark'],$result[$i]['FoodID']);
+
+                                }
+                                /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
+                                $t1_SN='美而美基隆中正店';
+                                $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
+                            ?>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>BFS-01</td>
                                 <td>漢堡</td>
@@ -186,21 +258,7 @@
                                         <span></span>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>BFS-01</td>
-                                <td>漢堡</td>
-                                <td>50</td>
-                                <td></td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
+                            </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -226,7 +284,50 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
+                            <?php
+
+                                $user = 'root';//資料庫使用者名稱
+                                $password = '';//資料庫的密碼
+                                try{
+                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
+                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
+                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                                }
+                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
+                                    Print "ERROR!:". $e->getMessage();
+                                    die();
+                                }
+
+                                $query = ("select * from foodsupplier");//select * from employee where ID = ?
+                                $stmt =  $db->prepare($query);
+                                $error= $stmt->execute();//$error= $stmt->execute(array($no));
+                                $result = $stmt->fetchAll();
+                                $shop_list = 
+                                '<tr>
+                                <td>%d</td>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>
+                                    <div id="%d" class="request_button">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </td>
+                                </tr>';
+                                for($i=0; $i<count($result); $i++)
+                                {
+                                    echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['SupplierName'],$result[$i]['Address'],$result[$i]['Phone'],$result[$i]['COO'],$result[$i]['FoodID']);
+
+                                }
+                                /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
+                                $t1_SN='美而美基隆中正店';
+                                $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
+                            ?>
+                            <!-- <tr>
                                 <td>1</td>
                                 <td>百桂食品</td>
                                 <td>彰化縣溪湖鎮東溪里員鹿路1段336號</td>
@@ -267,21 +368,7 @@
                                         <span></span>
                                     </div>
                                 </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>百桂食品</td>
-                                <td>彰化縣溪湖鎮東溪里員鹿路1段336號</td>
-                                <td>(04)882-5058</td>
-                                <td>台灣</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
+                            </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -544,7 +631,7 @@
                     <div class="card_title">
                         <h4>操作選單</h4>
                     </div>
-                    <div class="card_body">
+                    <div id="" class="card_body">
                         <button type="button" class="mb-2 btn btn-primary select_table_button">修改</button>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">刪除</button>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
