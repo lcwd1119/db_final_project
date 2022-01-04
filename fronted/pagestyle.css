@@ -332,6 +332,18 @@ input[type=number] {
   width: calc(100% - 40px);
   height: 95%;
 }
+.admin1 .file_border .file_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  cursor: pointer;
+}
+.admin1 .file_border .file_header button {
+  position: relative;
+  left: calc(40% - 50px);
+}
 .admin1 .file_border table {
   width: 100%;
   position: relative;
