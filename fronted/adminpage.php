@@ -56,12 +56,7 @@
                 <!--            店家資訊-->
                 <div class="grey_background admin1" style="display: ">
                     <div class="file_border">
-                        <div class="file_header">
-                            <h1>店家資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary select_table_button">
-                                新增
-                            </button>
-                        </div>
+                        <h1>店家資訊</h1>
                         <table>
                             <thead>
                             <tr>
@@ -127,12 +122,7 @@
                 <!--            食物資訊    -->
                 <div class="grey_background admin2" style="display: none">
                     <div class="file_border">
-                        <div class="file_header">
-                            <h1>食物資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary select_table_button">
-                                新增
-                            </button>
-                        </div>
+                        <h1>食物資訊</h1>
                         <table>
                             <thead>
                             <tr>
@@ -208,17 +198,12 @@
                 <!--            供應商資訊-->
                 <div class="grey_background admin3" style="display: none">
                     <div class="file_border">
-                        <div class="file_header">
-                            <h1>供應商資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary select_table_button">
-                                新增
-                            </button>
-                        </div>
+                        <h1>供應商資訊</h1>
                         <table>
                             <thead>
                             <tr>
                                 <th><span class="RWD_show">FID</span><span class="RWD_noShow">FoodID</span></th>
-                                <th><span class="RWD_show">SN</span><span class="RWD_noShow">SupplierName</span></th>
+                                <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
                                 <th>Address</th>
                                 <th>Phone</th>
                                 <th>COO<span class="RWD_noShow">(country of origin)</span></th>
@@ -546,7 +531,7 @@
                     </div>
                     <div class="card_body">
                         <button type="button" class="mb-2 btn btn-primary select_table_button">修改</button>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button">刪除</button>
+                        <button type="button" class="mb-2 btn btn-primary select_table_button" >刪除</button>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
                     </div>
                 </div>
