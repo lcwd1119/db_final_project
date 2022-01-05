@@ -52,11 +52,11 @@
 <div class="container-fluid ">
     <div class="row" style="height: max-content">
         <div class="">
-            <!--            食物資訊    -->
-            <div class="grey_background admin2" style="display: ">
+            <!--            供應商資訊-->
+            <div class="grey_background admin3" style="display: ">
                 <div class="file_border" style="max-width: 1000px;">
                     <div class="file_header">
-                        <h1>食物資訊</h1>
+                        <h1>供應商資訊</h1>
                         <button type="button" class="mb-2 btn btn-primary add">
                             新增
                         </button>
@@ -65,57 +65,53 @@
                         <thead>
                         <tr>
                             <th><span class="RWD_show">FID</span><span class="RWD_noShow">FoodID</span></th>
-                            <th><span class="RWD_show">BID</span><span class="RWD_noShow">BreakfastShopID</span></th>
-                            <th><span class="RWD_show">FN</span><span class="RWD_noShow">FoodName</span></th>
-                            <th>Price</th>
-                            <th>Remark</th>
+                            <th><span class="RWD_show">SN</span><span class="RWD_noShow">SupplierName</span></th>
+                            <th>Address</th>
+                            <th>Phone</th>
+                            <th>COO<span class="RWD_noShow">(country of origin)</span></th>
                             <th>edit</th>
                         </tr>
                         </thead>
                         <tbody>
                         <?php
 
-                        $user = 'root';//資料庫使用者名稱
-                        $password = '';//資料庫的密碼
-                        try{
-                            $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                            //之後若要結束與資料庫的連線，則使用「$db = null;」
-                            $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                            $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                        }
-                        catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                            Print "ERROR!:". $e->getMessage();
-                            die();
-                        }
+                            $user = 'root';//資料庫使用者名稱
+                            $password = '';//資料庫的密碼
+                            try{
+                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
+                                //之後若要結束與資料庫的連線，則使用「$db = null;」
+                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                            }
+                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
+                                Print "ERROR!:". $e->getMessage();
+                                die();
+                            }
 
-                        $query = ("select * from menu");//select * from employee where ID = ?
-                        $stmt =  $db->prepare($query);
-                        $error= $stmt->execute();//$error= $stmt->execute(array($no));
-                        $result = $stmt->fetchAll();
-                        $shop_list = 
-                        '<tr>
-                        <td>%d</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>%s</td>
-                        <td>
-                            <div id="%d" class="request_button">
-                                <span></span>
-                                <span></span>
-                                <span></span>
-                            </div>
-                        </td>
-                        </tr>';
-                        for($i=0; $i<count($result); $i++)
-                        {
-                            echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['BreakfastShopID'],$result[$i]['FoodName'],$result[$i]['Price'],$result[$i]['Remark'],$result[$i]['FoodID']);
-
-                        }
-                        /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
-                        $t1_SN='美而美基隆中正店';
-                        $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
-                        ?>
+                            $query = ("select * from foodsupplier");
+                            $stmt =  $db->prepare($query);
+                            $error= $stmt->execute();//$error= $stmt->execute(array($no));
+                            $result = $stmt->fetchAll();
+                            $shop_list = 
+                            '<tr>
+                            <td>%d</td>
+                            <td>%s</td>
+                            <td>%s</td>
+                            <td>%s</td>
+                            <td>%s</td>
+                            <td>
+                                <div id="%d" class="request_button">
+                                    <span></span>
+                                    <span></span>
+                                    <span></span>
+                                </div>
+                            </td>
+                            </tr>';
+                            for($i=0; $i<count($result); $i++)
+                            {
+                                echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['SupplierName'],$result[$i]['Address'],$result[$i]['Phone'],$result[$i]['COO'],$result[$i]['FoodID']);
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -125,7 +121,7 @@
                 <div class="file_border" style="max-width: 800px;">
                     <form action="postget_request.php" method="post">
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="menu" readonly>
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="foodsupplier" readonly>
                             <label for="table">Table</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
@@ -133,20 +129,20 @@
                             <label for="FoodID">FoodID</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter password" name="BreakfastShopID">
-                            <label for="BreakfastShopID">BreakfastShopID</label>
+                            <input type="text" class="form-control" id="SupplierName" placeholder="Enter password" name="SupplierName">
+                            <label for="SupplierName">SupplierName</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="FoodName" placeholder="Enter password" name="FoodName">
-                            <label for="FoodName">FoodName</label>
+                            <input type="text" class="form-control" id="Address" placeholder="Enter password" name="Address">
+                            <label for="Address">Address</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="Price" placeholder="Enter email" name="Price">
-                            <label for="Price">Price</label>
+                            <input type="text" class="form-control" id="Phone" placeholder="Enter email" name="Phone">
+                            <label for="Phone">Phone</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="Remark" placeholder="Enter email" name="Remark">
-                            <label for="Remark">Remark</label>
+                            <input type="text" class="form-control" id="COO" placeholder="Enter email" name="COO">
+                            <label for="COO">COO</label>
                         </div>
                         <button type="submit" class="btn btn-primary">新增</button>
                     </form>
