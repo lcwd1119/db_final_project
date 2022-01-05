@@ -323,7 +323,8 @@ input[type=number] {
 }*/
 .admin1 {
   padding-top: 100px;
-  padding-left: 40px;
+  display: flex;
+  justify-content: center;
 }
 .admin1 .file_border {
   border-radius: 10px;
@@ -338,7 +339,6 @@ input[type=number] {
   justify-content: center;
   align-items: center;
   overflow: hidden;
-  cursor: pointer;
 }
 .admin1 .file_border .file_header button {
   position: relative;
@@ -379,7 +379,8 @@ input[type=number] {
 
 .admin2 {
   padding-top: 100px;
-  padding-left: 40px;
+  display: flex;
+  justify-content: center;
 }
 .admin2 .file_border {
   border-radius: 10px;
@@ -387,6 +388,17 @@ input[type=number] {
   padding: 20px;
   width: calc(100% - 40px);
   height: 95%;
+}
+.admin2 .file_border .file_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.admin2 .file_border .file_header button {
+  position: relative;
+  left: calc(40% - 50px);
 }
 .admin2 .file_border table {
   width: 100%;
@@ -424,7 +436,8 @@ input[type=number] {
 
 .admin3 {
   padding-top: 100px;
-  padding-left: 40px;
+  display: flex;
+  justify-content: center;
 }
 .admin3 .file_border {
   border-radius: 10px;
@@ -432,6 +445,17 @@ input[type=number] {
   padding: 20px;
   width: calc(100% - 40px);
   height: 95%;
+}
+.admin3 .file_border .file_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.admin3 .file_border .file_header button {
+  position: relative;
+  left: calc(40% - 50px);
 }
 .admin3 .file_border table {
   width: 100%;
@@ -473,6 +497,63 @@ input[type=number] {
   overflow: hidden;
 }
 .admin3 .file_border table tbody tr td:nth-child(3) {
+  text-align: left;
+}
+
+.admin4 {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.admin4 .file_border {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  width: calc(100% - 40px);
+  height: 95%;
+}
+.admin4 .file_border .file_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.admin4 .file_border .file_header button {
+  position: relative;
+  left: calc(40% - 50px);
+}
+.admin4 .file_border table {
+  width: 100%;
+  position: relative;
+  margin: 0;
+  border-radius: 6px;
+}
+.admin4 .file_border table thead tr th {
+  text-align: center;
+  border-bottom: 3px solid #969696;
+  width: 8%;
+  border-radius: 6px;
+  min-width: 30px;
+}
+.admin4 .file_border table thead tr th:nth-child(5) {
+  text-align: left;
+  width: 60%;
+}
+.admin4 .file_border table thead tr th:last-child {
+  width: 8%;
+  text-align: left;
+  padding-left: 18px;
+}
+.admin4 .file_border table tbody tr {
+  border-bottom: 3px solid #969696;
+}
+.admin4 .file_border table tbody tr td {
+  text-align: center;
+  width: auto;
+  overflow: hidden;
+}
+.admin4 .file_border table tbody tr td:nth-child(5) {
   text-align: left;
 }
 
@@ -828,22 +909,6 @@ input[type=number] {
     padding-left: 0rem;
   }
 
-  .admin4 {
-    padding-left: 25px;
-  }
-  .admin4 .file_border {
-    margin: 15px;
-    border-radius: 10px;
-    background-color: white;
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.08);
-    position: relative;
-    float: left;
-    padding: 20px;
-    width: calc(100% - 55px);
-    height: 45%;
-    overflow: hidden;
-  }
-
   .RWD_button {
     display: block;
   }
@@ -892,6 +957,14 @@ input[type=number] {
 
   .RWD_noShow {
     display: none;
+  }
+
+  .admin4 {
+    padding-top: 70px;
+    padding-left: 10px;
+  }
+  .admin4 .file_border {
+    width: calc(100% - 10px);
   }
 
   .admin1 {

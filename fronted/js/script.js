@@ -20,14 +20,12 @@
     }*/
     //jquery
     $(document).ready(function () {
-        $(".admin_btn").click(function (e) {
+        $(".add").click(function (e) {
             $(".admin1").css("display","none")
             $(".admin2").css("display","none")
             $(".admin3").css("display","none")
+            $(".admin4").css("display","")
             console.log(e.target.id);
-            $("." + e.target.id).css("display","")
-            /*$(".card_show").css("display", "");
-            $(".black_background").css("display", "");*/
         });
 
         $(".card_spec").click(function () { //card動畫設定

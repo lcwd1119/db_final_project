@@ -35,14 +35,14 @@
         </button>
         <div class="collapse navbar-collapse" id="mynavbar">
             <ul class="navbar-nav me-auto text-center justify-content-end">
-                <li class="nav-item mt-1 admin_btn">
-                    <a id="admin1" class="nav-link" href="javascript:void(0)">店家資訊</a>
+                <li class="nav-item mt-1">
+                    <a id="admin1" class="nav-link" href="adminpage.php">店家資訊</a>
                 </li>
-                <li class="nav-item mt-1 admin_btn">
-                    <a id="admin2" class="nav-link" href="javascript:void(0)">食物資訊</a>
+                <li class="nav-item mt-1">
+                    <a id="admin2" class="nav-link" href="adminmenupage.php">食物資訊</a>
                 </li>
-                <li class="nav-item mt-1 admin_btn">
-                    <a id="admin3" class="nav-link" href="javascript:void(0)">供應商資訊</a>
+                <li class="nav-item mt-1">
+                    <a id="admin3" class="nav-link" href="adminsupplierpage.php">供應商資訊</a>
                 </li>
             </ul>
         </div>
@@ -55,10 +55,10 @@
 
                 <!--            店家資訊-->
                 <div class="grey_background admin1" style="display: ">
-                    <div class="file_border">
+                    <div class="file_border" style="max-width: 1000px;">
                         <div class="file_header">
                             <h1>店家資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary select_table_button">
+                            <button type="button" class="mb-2 btn btn-primary add">
                                 新增
                             </button>
                         </div>
@@ -72,305 +72,70 @@
                             </tr>
                             </thead>
                             <tbody>
+                            
                             <?php
 
-                                $user = 'root';//資料庫使用者名稱
-                                $password = '';//資料庫的密碼
-                                try{
-                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                                }
-                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                    Print "ERROR!:". $e->getMessage();
-                                    die();
-                                }
+                            $user = 'root';//資料庫使用者名稱
+                            $password = '';//資料庫的密碼
+                            try{
+                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
+                                //之後若要結束與資料庫的連線，則使用「$db = null;」
+                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
+                            }
+                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
+                                Print "ERROR!:". $e->getMessage();
+                                die();
+                            }
 
-                                $query = ("select * from bfshop");//select * from employee where ID = ?
-                                $stmt =  $db->prepare($query);
-                                $error= $stmt->execute();//$error= $stmt->execute(array($no));
-                                $result = $stmt->fetchAll();
-                                $shop_list = 
-                                '<tr>
-                                    <td>%s</td>
-                                    <td>%s</td>
-                                    <td>%s</td>
-                                    <td>
-                                        <div id="%s" class="request_button">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </td>
-                                </tr>';
-                                for($i=0; $i<count($result); $i++)
-                                {
-                                    echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID']);
+                            $query = ("select * from bfshop");//select * from employee where ID = ?
+                            $stmt =  $db->prepare($query);
+                            $error= $stmt->execute();//$error= $stmt->execute(array($no));
+                            $result = $stmt->fetchAll();
+                            $shop_list = 
+                            '<tr>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>%s</td>
+                                <td>
+                                    <div id="%s" class="request_button">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </td>
+                            </tr>';
+                            for($i=0; $i<count($result); $i++)
+                            {
+                                echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID']);
 
-                                }
-                                /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
-                                $t1_SN='美而美基隆中正店';
-                                $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
+                            }
+                            /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
+                            $t1_SN='美而美基隆中正店';
+                            $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
                             ?>
-                            <!-- <tr>
-                                <td>BFS<span class="RWD_show"></span>-01</td>
-                                <td>美而美基隆中正店</td>
-                                <td>5:00am<span class="RWD_show"></span>~1:00pm</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>BFS<span class="RWD_show"></span>-01</td>
-                                <td>美而美基隆中正店</td>
-                                <td>5:00am<span class="RWD_show"></span>~1:00pm</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>BFS<span class="RWD_show"></span>-01</td>
-                                <td>美而美基隆中正店</td>
-                                <td>5:00am<span class="RWD_show"></span>~1:00pm</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr> -->
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <!--            食物資訊    -->
-                <div class="grey_background admin2" style="display: none">
-                    <div class="file_border">
-                        <div class="file_header">
-                            <h1>食物資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary select_table_button">
-                                新增
-                            </button>
-                        </div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th><span class="RWD_show">FID</span><span class="RWD_noShow">FoodID</span></th>
-                                <th><span class="RWD_show">BID</span><span class="RWD_noShow">BreakfastShopID</span></th>
-                                <th><span class="RWD_show">FN</span><span class="RWD_noShow">FoodName</span></th>
-                                <th>Price</th>
-                                <th>Remark</th>
-                                <th>edit</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-
-                                $user = 'root';//資料庫使用者名稱
-                                $password = '';//資料庫的密碼
-                                try{
-                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                                }
-                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                    Print "ERROR!:". $e->getMessage();
-                                    die();
-                                }
-
-                                $query = ("select * from menu");//select * from employee where ID = ?
-                                $stmt =  $db->prepare($query);
-                                $error= $stmt->execute();//$error= $stmt->execute(array($no));
-                                $result = $stmt->fetchAll();
-                                $shop_list = 
-                                '<tr>
-                                <td>%d</td>
-                                <td>%s</td>
-                                <td>%s</td>
-                                <td>%s</td>
-                                <td>%s</td>
-                                <td>
-                                    <div id="%d" class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                                </tr>';
-                                for($i=0; $i<count($result); $i++)
-                                {
-                                    echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['BreakfastShopID'],$result[$i]['FoodName'],$result[$i]['Price'],$result[$i]['Remark'],$result[$i]['FoodID']);
-
-                                }
-                                /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
-                                $t1_SN='美而美基隆中正店';
-                                $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
-                            ?>
-                            <!-- <tr>
-                                <td>1</td>
-                                <td>BFS-01</td>
-                                <td>漢堡</td>
-                                <td>50</td>
-                                <td></td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>BFS-01</td>
-                                <td>漢堡</td>
-                                <td>50</td>
-                                <td></td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>BFS-01</td>
-                                <td>漢堡</td>
-                                <td>50</td>
-                                <td></td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr> -->
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-                <!--            供應商資訊-->
-                <div class="grey_background admin3" style="display: none">
-                    <div class="file_border">
-                        <div class="file_header">
-                            <h1>供應商資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary select_table_button">
-                                新增
-                            </button>
-                        </div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th><span class="RWD_show">FID</span><span class="RWD_noShow">FoodID</span></th>
-                                <th><span class="RWD_show">SN</span><span class="RWD_noShow">SupplierName</span></th>
-                                <th>Address</th>
-                                <th>Phone</th>
-                                <th>COO<span class="RWD_noShow">(country of origin)</span></th>
-                                <th>edit</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <?php
-
-                                $user = 'root';//資料庫使用者名稱
-                                $password = '';//資料庫的密碼
-                                try{
-                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                                }
-                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                    Print "ERROR!:". $e->getMessage();
-                                    die();
-                                }
-
-                                $query = ("select * from foodsupplier");//select * from employee where ID = ?
-                                $stmt =  $db->prepare($query);
-                                $error= $stmt->execute();//$error= $stmt->execute(array($no));
-                                $result = $stmt->fetchAll();
-                                $shop_list = 
-                                '<tr>
-                                <td>%d</td>
-                                <td>%s</td>
-                                <td>%s</td>
-                                <td>%s</td>
-                                <td>%s</td>
-                                <td>
-                                    <div id="%d" class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                                </tr>';
-                                for($i=0; $i<count($result); $i++)
-                                {
-                                    echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['SupplierName'],$result[$i]['Address'],$result[$i]['Phone'],$result[$i]['COO'],$result[$i]['FoodID']);
-
-                                }
-                                /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
-                                $t1_SN='美而美基隆中正店';
-                                $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
-                            ?>
-                            <!-- <tr>
-                                <td>1</td>
-                                <td>百桂食品</td>
-                                <td>彰化縣溪湖鎮東溪里員鹿路1段336號</td>
-                                <td>(04)882-5058</td>
-                                <td>台灣</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>百桂食品</td>
-                                <td>彰化縣溪湖鎮東溪里員鹿路1段336號</td>
-                                <td>(04)882-5058</td>
-                                <td>台灣</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>百桂食品</td>
-                                <td>彰化縣溪湖鎮東溪里員鹿路1段336號</td>
-                                <td>(04)882-5058</td>
-                                <td>台灣</td>
-                                <td>
-                                    <div class="request_button">
-                                        <span></span>
-                                        <span></span>
-                                        <span></span>
-                                    </div>
-                                </td>
-                            </tr> -->
-                            </tbody>
-                        </table>
+                <!--            新增頁面    -->
+                <div class="grey_background admin4" style="display: none">
+                    <div class="file_border" style="max-width: 800px;">
+                        <form action="/action_page.php">
+                            <div class="form-floating mb-3 mt-3">
+                                <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter email" name="BreakfastShopID">
+                                <label for="BreakfastShopID">BreakfastShopID</label>
+                            </div>
+                            <div class="form-floating mt-3 mb-3">
+                                <input type="text" class="form-control" id="ShopName" placeholder="Enter password" name="ShopName">
+                                <label for="ShopName">ShopName</label>
+                            </div>
+                            <div class="form-floating mt-3 mb-3">
+                                <input type="text" class="form-control" id="BusinessHour" placeholder="Enter password" name="BusinessHour">
+                                <label for="BusinessHour">BusinessHour</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">新增</button>
+                        </form>
                     </div>
                 </div>
                 <!--            教室被點擊後顯示的畫面    -->
@@ -631,10 +396,12 @@
                     <div class="card_title">
                         <h4>操作選單</h4>
                     </div>
-                    <div id="" class="card_body">
+                    <div class="card_body">
+                        <form>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">修改</button>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">刪除</button>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
+                        </form>
                     </div>
                 </div>
                 <div class="black_background" style="display: none"></div>
