@@ -51,48 +51,36 @@
 <!--style="background-color: #bfd1ec"  這個原放置於sidebar李-->
 <div class="container-fluid ">
     <div class="row" style="height: max-content">
-            <div class="">
+        <div class="">
 
-                <!--            店家資訊-->
-                <div class="grey_background admin1" style="display: ">
-                    <div class="file_border" style="max-width: 1000px;">
-                        <div class="file_header">
-                            <h1>店家資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary add">
-                                新增
-                            </button>
-                        </div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
-                                <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
-                                <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
-                                <th>edit</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            
-                            <?php
+            <!--            店家資訊-->
+            <div class="grey_background admin1" style="display: ">
+                <div class="file_border" style="max-width: 1000px;">
+                    <div class="file_header">
+                        <h1>店家資訊</h1>
+                        <button type="button" class="mb-2 btn btn-primary add">
+                            新增
+                        </button>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
+                            <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
+                            <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
+                            <th>edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                            $user = 'root';//資料庫使用者名稱
-                            $password = '';//資料庫的密碼
-                            try{
-                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                            }
-                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                Print "ERROR!:". $e->getMessage();
-                                die();
-                            }
+                        <?php
+                        include_once "db_conn.php";
 
-                            $query = ("select * from bfshop");//select * from employee where ID = ?
-                            $stmt =  $db->prepare($query);
-                            $error= $stmt->execute();//$error= $stmt->execute(array($no));
-                            $result = $stmt->fetchAll();
-                            $shop_list = 
+                        $query = ("select * from bfshop");//select * from employee where ID = ?
+                        $stmt = $db->prepare($query);
+                        $error = $stmt->execute();//$error= $stmt->execute(array($no));
+                        $result = $stmt->fetchAll();
+                        $shop_list =
                             '<tr>
                                 <td>%s</td>
                                 <td>%s</td>
@@ -105,83 +93,84 @@
                                     </div>
                                 </td>
                             </tr>';
-                            for($i=0; $i<count($result); $i++)
-                            {
-                                echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID']);
+                        for ($i = 0; $i < count($result); $i++) {
+                            echo sprintf($shop_list, $result[$i]['BreakfastShopID'], $result[$i]['ShopName'], $result[$i]['BusinessHour'], $result[$i]['BreakfastShopID']);
+                        }
 
-                            }
-                            /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
-                            $t1_SN='美而美基隆中正店';
-                            $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
-                            ?>
-                            </tbody>
-                        </table>
-                    </div>
+                        /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
+                        $t1_SN='美而美基隆中正店';
+                        $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-                <!--            新增頁面    -->
-                <div class="grey_background admin4" style="display: none">
-                    <div class="file_border" style="max-width: 800px;">
-                        <form action="postget_request.php" method="post">
+            </div>
+            <!--            新增頁面    -->
+            <div class="grey_background admin4" style="display: none">
+                <div class="file_border" style="max-width: 800px;">
+                    <form action="postget_request.php" method="post">
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="bfshop" readonly>
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table"
+                                   value="bfshop" readonly>
                             <label for="table">Table</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter email" name="BreakfastShopID">
+                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter email"
+                                   name="BreakfastShopID">
                             <label for="BreakfastShopID">BreakfastShopID</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="ShopName" placeholder="Enter password" name="ShopName">
+                            <input type="text" class="form-control" id="ShopName" placeholder="Enter password"
+                                   name="ShopName">
                             <label for="ShopName">ShopName</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="BusinessHour" placeholder="Enter password" name="BusinessHour">
+                            <input type="text" class="form-control" id="BusinessHour" placeholder="Enter password"
+                                   name="BusinessHour">
                             <label for="BusinessHour">BusinessHour</label>
                         </div>
                         <button type="submit" class="btn btn-primary">新增</button>
                     </form>
-                    </div>
                 </div>
-                <!--            操作按鈕點擊後操作頁面-->
-                <div class="card card_request"style="display: none">
-                    <div class="card_title">
-                        <h4>操作選單</h4>
-                    </div>
-                    <div class="card_body">
-                        <form>
+            </div>
+            <!--            操作按鈕點擊後操作頁面-->
+            <div class="card card_request" style="display: none">
+                <div class="card_title">
+                    <h4>操作選單</h4>
+                </div>
+                <div class="card_body">
                         <button type="button" class="mb-2 btn btn-primary select_table_button">修改</button>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">刪除</button>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
-                        </form>
-                    </div>
                 </div>
-                <div class="black_background" style="display: none"></div>
             </div>
-            <!--<div class="request no_display">
-                <div class="row m-2">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action">Action item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-success">Success item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Secondary item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-info">Info item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Warning item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Danger item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Primary item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Dark item</a>
-                        <a href="#" class="list-group-item list-group-item-action list-group-item-light">Light item</a>
-                    </div>
+            <div class="black_background" style="display: none"></div>
+        </div>
+        <!--<div class="request no_display">
+            <div class="row m-2">
+                <div class="list-group">
+                    <a href="#" class="list-group-item list-group-item-action">Action item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-success">Success item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Secondary item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">Info item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Warning item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Danger item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Primary item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Dark item</a>
+                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Light item</a>
                 </div>
-            </div>-->
-            <div class="send">
-                <div class="row m-2">
+            </div>
+        </div>-->
+        <div class="send">
+            <div class="row m-2">
 
-                </div>
             </div>
-            <div class="track">
-                <div class="row m-2">
+        </div>
+        <div class="track">
+            <div class="row m-2">
 
-                </div>
             </div>
+        </div>
     </div>
 </div>
 <!--回到最上層按鈕-->

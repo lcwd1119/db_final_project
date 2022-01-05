@@ -74,26 +74,14 @@
                         </thead>
                         <tbody>
                         <?php
-
-                            $user = 'root';//資料庫使用者名稱
-                            $password = '';//資料庫的密碼
-                            try{
-                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                            }
-                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                Print "ERROR!:". $e->getMessage();
-                                die();
-                            }
+                        include_once "db_conn.php";
 
                             $query = ("select * from foodsupplier");
-                            $stmt =  $db->prepare($query);
-                            $error= $stmt->execute();//$error= $stmt->execute(array($no));
+                            $stmt = $db->prepare($query);
+                            $error = $stmt->execute();//$error= $stmt->execute(array($no));
                             $result = $stmt->fetchAll();
-                            $shop_list = 
-                            '<tr>
+                            $shop_list =
+                                '<tr>
                             <td>%d</td>
                             <td>%s</td>
                             <td>%s</td>
@@ -107,9 +95,8 @@
                                 </div>
                             </td>
                             </tr>';
-                            for($i=0; $i<count($result); $i++)
-                            {
-                                echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['SupplierName'],$result[$i]['Address'],$result[$i]['Phone'],$result[$i]['COO'],$result[$i]['FoodID']);
+                            for ($i = 0; $i < count($result); $i++) {
+                                echo sprintf($shop_list, $result[$i]['FoodID'], $result[$i]['SupplierName'], $result[$i]['Address'], $result[$i]['Phone'], $result[$i]['COO'], $result[$i]['FoodID']);
                             }
                             ?>
                         </tbody>
@@ -121,7 +108,8 @@
                 <div class="file_border" style="max-width: 800px;">
                     <form action="postget_request.php" method="post">
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="foodsupplier" readonly>
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table"
+                                   value="foodsupplier" readonly>
                             <label for="table">Table</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
@@ -129,11 +117,13 @@
                             <label for="FoodID">FoodID</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="SupplierName" placeholder="Enter password" name="SupplierName">
+                            <input type="text" class="form-control" id="SupplierName" placeholder="Enter password"
+                                   name="SupplierName">
                             <label for="SupplierName">SupplierName</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="Address" placeholder="Enter password" name="Address">
+                            <input type="text" class="form-control" id="Address" placeholder="Enter password"
+                                   name="Address">
                             <label for="Address">Address</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
@@ -149,7 +139,7 @@
                 </div>
             </div>
             <!--            操作按鈕點擊後操作頁面-->
-            <div class="card card_request"style="display: none">
+            <div class="card card_request" style="display: none">
                 <div class="card_title">
                     <h4>操作選單</h4>
                 </div>

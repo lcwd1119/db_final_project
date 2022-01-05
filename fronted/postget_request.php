@@ -1,75 +1,71 @@
+<?php
+//header("Content-type:text/html;charset=utf-8");
+//include_once "adminsupplierpage.php";
 
-                    <?php
-                        //header("Content-type:text/html;charset=utf-8");
-                        //include_once "adminsupplierpage.php";
-                        $Table = $_POST['table'];
-                        if($Table == "foodsupplier"){
-                            $FoodID = $_POST['FoodID'];
-                            $SupplierName = $_POST['SupplierName'];
-                            $Address = $_POST['Address'];
-                            $Phone = $_POST['Phone'];
-                            $COO = $_POST['COO'];
-                            $user = 'root';//資料庫使用者名稱
-                            $password = '';//資料庫的密碼
-                            try{
-                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                                }
-                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                Print "ERROR!:". $e->getMessage();
-                                die();
-                            }
-                            $query = ("insert into ".$Table." values (?,?,?,?,?)");
-                            $stmt =  $db->prepare($query);
-                            $error= $stmt->execute(array($FoodID,$SupplierName,$Address,$Phone,$COO));//$error= $stmt->execute(array($no));
-                            header("Location:adminfoodsupplierpage.php");
-                        }
-                        else if($Table == "bfshop"){
-                                $BreakfastShopID = $_POST['BreakfastShopID'];
-                                $ShopName = $_POST['ShopName'];
-                                $BusinessHour = $_POST['BusinessHour'];
-                                $user = 'root';//資料庫使用者名稱
-                                $password = '';//資料庫的密碼
-                                try{
-                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                                    }
-                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                    Print "ERROR!:". $e->getMessage();
-                                    die();
-                                }
-                                $query = ("insert into ".$Table." values (?,?,?)");
-                                $stmt =  $db->prepare($query);
-                                $error= $stmt->execute(array($BreakfastShopID,$ShopName,$BusinessHour));//$error= $stmt->execute(array($no));
-                                header("Location:adminbfshoppage.php");
-                        }
-                        else if($Table == "menu"){
-                                $FoodID = $_POST['FoodID'];
-                                $BreakfastShopID = $_POST['BreakfastShopID'];
-                                $FoodName = $_POST['FoodName'];
-                                $Price = $_POST['Price'];
-                                $Remark = $_POST['Remark'];
-                                $user = 'root';//資料庫使用者名稱
-                                $password = '';//資料庫的密碼
-                                try{
-                                    $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                    //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                    $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                                    }
-                                catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                    Print "ERROR!:". $e->getMessage();
-                                    die();
-                                }
-                                $query = ("insert into ".$Table." values (?,?,?,?,?)");
-                                $stmt =  $db->prepare($query);
-                                $error= $stmt->execute(array($FoodID,$BreakfastShopID,$FoodName,$Price,$Remark));//$error= $stmt->execute(array($no));
-                                header("Location:adminmenupage.php");
-                        }
-                        
-                    ?>
+$Table = $_POST['table'];
+if ($Table == "foodsupplier") {
+    $FoodID = $_POST['FoodID'];
+    $SupplierName = $_POST['SupplierName'];
+    $Address = $_POST['Address'];
+    $Phone = $_POST['Phone'];
+    $COO = $_POST['COO'];
+    if (empty($FoodID) || empty($SupplierName)) {
+        echo "<script>alert('錯誤：ID及供應商名稱不可為空');history.back()</script>";
+    } else {
+        try {
+            include_once "db_conn.php";
+            $query = ("insert into " . $Table . " values (?,?,?,?,?)");
+            $stmt = $db->prepare($query);
+            $error = $stmt->execute(array($FoodID, $SupplierName, $Address, $Phone, $COO));//$error= $stmt->execute(array($no));
+            echo "<script>alert('新增成功');history.back()</script>";
+        } catch (PDOException $e) {
+            echo sprintf('<script>alert("輸入錯誤:\n%s")</script>',$e->getMessage());
+            echo "<script>history.back()</script>";
+        }
+    }
+    //header("Location:adminfoodsupplierpage.php");
+} else if ($Table == "bfshop") {
+    $BreakfastShopID = $_POST['BreakfastShopID'];
+    $ShopName = $_POST['ShopName'];
+    $BusinessHour = $_POST['BusinessHour'];
+    if (empty($BreakfastShopID) || empty($ShopName)) {
+        echo "<script>alert('錯誤：ID及店名不可為空');history.back()</script>";
+    } else {
+        try {
+            include_once "db_conn.php";
+            $query = ("insert into " . $Table . " values (?,?,?)");
+            $stmt = $db->prepare($query);
+            $error = $stmt->execute(array($BreakfastShopID, $ShopName, $BusinessHour));//$error= $stmt->execute(array($no));
+            echo "<script>alert('新增成功');history.back()</script>";
+        } catch (PDOException $e) {
+            echo sprintf('<script>alert("輸入錯誤:\n%s")</script>',$e->getMessage());
+            echo "<script>history.back()</script>";
+        }
+    }
+    //header("Location:adminbfshoppage.php");
+} else if ($Table == "menu") {
+    $FoodID = $_POST['FoodID'];
+    $BreakfastShopID = $_POST['BreakfastShopID'];
+    $FoodName = $_POST['FoodName'];
+    $Price = $_POST['Price'];
+    $Remark = $_POST['Remark'];
+    if (empty($FoodID) || empty($BreakfastShopID) || empty($FoodName)) {
+        echo "<script>alert('錯誤：食物,食物ID及早餐店ID不可為空');history.back()</script>";
+    } else {
+        try{
+            include_once "db_conn.php";
+            $query = ("insert into " . $Table . " values (?,?,?,?,?)");
+            $stmt = $db->prepare($query);
+            $error = $stmt->execute(array($FoodID, $BreakfastShopID, $FoodName, $Price, $Remark));//$error= $stmt->execute(array($no));
+            echo "<script>alert('新增成功');history.back()</script>";
+        }
+        catch (PDOException $e){
+            echo sprintf('<script>alert("輸入錯誤:\n%s")</script>',$e->getMessage());
+            echo "<script>history.back()</script>";
+        }
+    }
+    // header("Location:adminmenupage.php");
+}
+
+?>
                     
