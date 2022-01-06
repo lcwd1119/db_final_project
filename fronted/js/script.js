@@ -11,7 +11,9 @@
     toggle_button.onclick = function (){
         toggle_button.classList.toggle('active')
     }
-    let sidebar = document.querySelector('.sidebar');
+
+
+
     /*let admin_page1 = document.querySelectorAll('.admin_btn');
     admin_page1.onclick = function (e){
         console.log(e);
@@ -20,14 +22,38 @@
     }*/
     //jquery
     $(document).ready(function () {
+        let search_target;
+        //------------------------新增按鈕
         $(".add").click(function (e) {
             $(".admin1").css("display","none")
             $(".admin2").css("display","none")
             $(".admin3").css("display","none")
-            $(".admin4").css("display","")
-            console.log(e.target.id);
+            $(".addpage").css("display","")
         });
-
+        //------------------------各個頁面的編輯按鈕
+        $(".edit_btn_shop").click(function (e) {
+            $(".editpage input#BreakfastShopID").attr("value",search_target);
+            $(".admin1").css("display","none")
+            $(".admin2").css("display","none")
+            $(".admin3").css("display","none")
+            $(".editpage").css("display","")
+            //console.log(e.target.id);
+        });
+        $(".edit_btn_supplier").click(function (e) {
+            $(".editpage input#FoodID").attr("value",search_target);
+            $(".admin1").css("display","none")
+            $(".admin2").css("display","none")
+            $(".admin3").css("display","none")
+            $(".editpage").css("display","")
+        });
+        $(".edit_btn_menu").click(function (e) {
+            $(".editpage input#FoodID").attr("value",search_target);
+            $(".admin1").css("display","none")
+            $(".admin2").css("display","none")
+            $(".admin3").css("display","none")
+            $(".editpage").css("display","")
+        });
+        //-----------------目前沒用
         $(".card_spec").click(function () { //card動畫設定
             $(".card_show").css("display", "");
             $(".black_background").css("display", "");
@@ -37,6 +63,7 @@
             $(".black_background").css("display", "");
             
         });
+        //------------------黑幕
         $(".black_background").click(function (){
             $(".card_show").css("display", "none");
             $(".card_edit").css("display", "none");
@@ -44,6 +71,7 @@
             $(".black_background").css("display", "none");
             $(".card_request").css("display", "none");
         });
+        //-------------------關閉按鈕
         $(".close_button").click(function (){
             $(".card_show").css("display", "none");
             $(".card_edit").css("display", "none");
@@ -51,8 +79,11 @@
             $(".black_background").css("display", "none");
             $(".card_request").css("display", "none");
         });
+        //-----------------------------------
+        //                  操作按鈕
         $(".request_button").click(function (e) { //card動畫設定
-
+            search_target = e.target.id;
+            console.log(search_target);
             $(".card_request").css("display", "");
             $(".black_background").css("display", "");
         });
@@ -60,6 +91,7 @@
             $(".card_request").css("display", "none");
             $(".black_background").css("display", "none");
         });
+        //----------------------------------
     });
 
 }
