@@ -24,7 +24,7 @@
 <!--Header-->
 <nav class="navbar navbar-expand-sm navbar-white bg-white fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="adminpage.php">早餐店資料庫系統</a>
+        <a class="navbar-brand" href="adminbfshoppage.php">早餐店資料庫系統</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <!--            <span class="navbar-toggler-icon"></span>-->
             <div class="toggle_button">
@@ -121,7 +121,7 @@
                 </div>
             </div>
             <!--            新增頁面-->
-            <div class="grey_background admin4" style="display: none">
+            <div class="grey_background admin4 addpage" style="display: none">
                 <div class="file_border" style="max-width: 800px;">
                     <form action="postget_request.php" method="post">
                         <div class="form-floating mb-3 mt-3">
@@ -152,45 +152,53 @@
                     </form>
                 </div>
             </div>
+            <!--            修改頁面-->
+            <div class="grey_background admin4 editpage" style="display: none">
+                <div class="file_border" style="max-width: 800px;">
+                    <form action="edit.php" method="post">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="menu" readonly>
+                            <label for="table">Table</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="FoodID" placeholder="Enter email" name="FoodID" readonly>
+                            <label for="FoodID">FoodID</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter password" name="BreakfastShopID">
+                            <label for="BreakfastShopID">BreakfastShopID</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="FoodName" placeholder="Enter password" name="FoodName">
+                            <label for="FoodName">FoodName</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="Price" placeholder="Enter email" name="Price">
+                            <label for="Price">Price</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="Remark" placeholder="Enter email" name="Remark">
+                            <label for="Remark">Remark</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">新增</button>
+                    </form>
+                </div>
+            </div>
             <!--            操作按鈕點擊後操作頁面-->
             <div class="card card_request"style="display: none">
                 <div class="card_title">
                     <h4>操作選單</h4>
                 </div>
                 <div class="card_body">
+                        <button type="button" class="mb-2 btn btn-primary select_table_button edit_btn_menu">修改</button>
                     <form>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button">修改</button>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button">刪除</button>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
+                        <button type="button" class="mb-2 btn btn-primary select_table_button delete_btn_menu">刪除</button>
                     </form>
+                        <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
+
                 </div>
             </div>
             <div class="black_background" style="display: none"></div>
-        </div>
-        <!--<div class="request no_display">
-            <div class="row m-2">
-                <div class="list-group">
-                    <a href="#" class="list-group-item list-group-item-action">Action item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-success">Success item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-secondary">Secondary item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-info">Info item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-warning">Warning item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-danger">Danger item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-primary">Primary item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-dark">Dark item</a>
-                    <a href="#" class="list-group-item list-group-item-action list-group-item-light">Light item</a>
-                </div>
-            </div>
-        </div>-->
-        <div class="send">
-            <div class="row m-2">
-
-            </div>
-        </div>
-        <div class="track">
-            <div class="row m-2">
-
-            </div>
         </div>
     </div>
 </div>
