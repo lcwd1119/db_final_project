@@ -95,8 +95,9 @@
                                 </div>
                             </td>
                             </tr>';
-                            for ($i = 0; $i < count($result); $i++) {
-                                echo sprintf($shop_list, $result[$i]['FoodID'], $result[$i]['SupplierName'], $result[$i]['Address'], $result[$i]['Phone'], $result[$i]['COO'], $result[$i]['FoodID']);
+                            for($i=0; $i<count($result); $i++)
+                            {
+                                echo sprintf($shop_list,$result[$i]['FoodID'],$result[$i]['SupplierName'],$result[$i]['Address'],$result[$i]['Phone'],$result[$i]['COO'],$result[$i]['FoodID'],$result[$i]['SupplierName']);
                             }
                             ?>
                         </tbody>
@@ -104,12 +105,11 @@
                 </div>
             </div>
             <!--            新增頁面-->
-            <div class="grey_background admin4" style="display: none">
+            <div class="grey_background admin4 addpage" style="display: none">
                 <div class="file_border" style="max-width: 800px;">
                     <form action="postget_request.php" method="post">
                         <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table"
-                                   value="foodsupplier" readonly>
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="foodsupplier" readonly>
                             <label for="table">Table</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
@@ -117,13 +117,43 @@
                             <label for="FoodID">FoodID</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="SupplierName" placeholder="Enter password"
-                                   name="SupplierName">
+                            <input type="text" class="form-control" id="SupplierName" placeholder="Enter password" name="SupplierName">
                             <label for="SupplierName">SupplierName</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="Address" placeholder="Enter password"
-                                   name="Address">
+                            <input type="text" class="form-control" id="Address" placeholder="Enter password" name="Address">
+                            <label for="Address">Address</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="Phone" placeholder="Enter email" name="Phone">
+                            <label for="Phone">Phone</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="COO" placeholder="Enter email" name="COO">
+                            <label for="COO">COO</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">新增</button>
+                    </form>
+                </div>
+            </div>
+            <!--            修改頁面-->
+            <div class="grey_background admin4 editpage" style="display: none">
+                <div class="file_border" style="max-width: 800px;">
+                    <form action="edit.php" method="post">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="foodsupplier" readonly>
+                            <label for="table">Table</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="FoodID" placeholder="Enter email" name="FoodID" readonly>
+                            <label for="FoodID">FoodID</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="SupplierName" placeholder="Enter password" name="SupplierName">
+                            <label for="SupplierName">SupplierName</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="Address" placeholder="Enter password" name="Address">
                             <label for="Address">Address</label>
                         </div>
                         <div class="form-floating mb-3 mt-3">
@@ -139,16 +169,14 @@
                 </div>
             </div>
             <!--            操作按鈕點擊後操作頁面-->
-            <div class="card card_request" style="display: none">
+            <div class="card card_request"style="display: none">
                 <div class="card_title">
                     <h4>操作選單</h4>
                 </div>
                 <div class="card_body">
-                    <form>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button">修改</button>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button">刪除</button>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
-                    </form>
+                        <button type="button" class="mb-2 btn btn-primary select_table_button edit_btn_supplier">修改</button>
+                        <button type="button" class="mb-2 btn btn-primary select_table_button delete_btn_supplier">刪除</button>
+                        <button type="button" class="mb-2 btn btn-primary select_table_button ">離開</button>
                 </div>
             </div>
             <div class="black_background" style="display: none"></div>
