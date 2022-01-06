@@ -51,48 +51,36 @@
 <!--style="background-color: #bfd1ec"  這個原放置於sidebar李-->
 <div class="container-fluid ">
     <div class="row" style="height: max-content">
-            <div class="">
+        <div class="">
 
-                <!--            店家資訊-->
-                <div class="grey_background admin1" style="display: ">
-                    <div class="file_border" style="max-width: 1000px;">
-                        <div class="file_header">
-                            <h1>店家資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary add">
-                                新增
-                            </button>
-                        </div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
-                                <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
-                                <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
-                                <th>edit</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            
-                            <?php
+            <!--            店家資訊-->
+            <div class="grey_background admin1" style="display: ">
+                <div class="file_border" style="max-width: 1000px;">
+                    <div class="file_header">
+                        <h1>店家資訊</h1>
+                        <button type="button" class="mb-2 btn btn-primary add">
+                            新增
+                        </button>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
+                            <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
+                            <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
+                            <th>edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
 
-                            $user = 'root';//資料庫使用者名稱
-                            $password = '';//資料庫的密碼
-                            try{
-                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                            }
-                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                Print "ERROR!:". $e->getMessage();
-                                die();
-                            }
+                        <?php
+                        include_once "db_conn.php";
 
-                            $query = ("select * from bfshop");//select * from employee where ID = ?
-                            $stmt =  $db->prepare($query);
-                            $error= $stmt->execute();//$error= $stmt->execute(array($no));
-                            $result = $stmt->fetchAll();
-                            $shop_list = 
+                        $query = ("select * from bfshop");//select * from employee where ID = ?
+                        $stmt = $db->prepare($query);
+                        $error = $stmt->execute();//$error= $stmt->execute(array($no));
+                        $result = $stmt->fetchAll();
+                        $shop_list =
                             '<tr>
                                 <td>%s</td>
                                 <td>%s</td>
