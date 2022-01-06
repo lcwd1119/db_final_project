@@ -191,9 +191,11 @@
                 </div>
                 <div class="card_body">
                         <button type="button" class="mb-2 btn btn-primary select_table_button edit_btn_menu">修改</button>
-                    <form>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button delete_btn_menu">刪除</button>
-                    </form>
+                        <form action="delete.php" method="post">
+                            <input type="hidden" id="table" name="table" value="menu" >
+                            <input class="primarykey" id="FoodID" type="hidden" name="FoodID" >
+                            <button type="submit" class="mb-2 btn btn-primary select_table_button delete_btn_menu">刪除</button>
+                        </form>
                         <button type="button" class="mb-2 btn btn-primary select_table_button">離開</button>
 
                 </div>

@@ -37,6 +37,6 @@
                                 $error= $stmt->execute(array($FoodID));//$error= $stmt->execute(array($no));
                                 header("Location:adminmenupage.php");
                         }
-                        
+                        print_r($_POST);
                     ?>
                     
