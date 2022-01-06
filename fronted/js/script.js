@@ -53,6 +53,17 @@
             $(".admin3").css("display","none")
             $(".editpage").css("display","")
         });
+        //------------------------各個頁面的刪除按鈕
+        $(".delete_btn_shop").click(function (e) {
+            $(".card_request .primarykey").attr("value",search_target);
+            //console.log(e.target.id);
+        });
+        $(".delete_btn_supplier").click(function (e) {
+            $(".card_request .primarykey").attr("value",search_target);
+        });
+        $(".delete_btn_menu").click(function (e) {
+            $(".card_request .primarykey").attr("value",search_target);
+        });
         //-----------------目前沒用
         $(".card_spec").click(function () { //card動畫設定
             $(".card_show").css("display", "");

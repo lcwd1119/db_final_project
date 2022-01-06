@@ -161,7 +161,11 @@
                     </div>
                     <div class="card_body">
                         <button type="button" class="mb-2 btn btn-primary select_table_button edit_btn_shop">修改</button>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button delete_btn_shop">刪除</button>
+                        <form action="delete.php" method="post">
+                            <input type="hidden" name="table" value="bfshop" >
+                            <input class="primarykey" type="hidden" name="BreakfastShopID" >
+                            <button type="submit" class="mb-2 btn btn-primary select_table_button delete_btn_shop">刪除</button>
+                        </form>
                         <button type="button" class="mb-2 btn btn-primary select_table_button ">離開</button>
                     </div>
                 </div>
