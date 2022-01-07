@@ -1,7 +1,7 @@
 <?php
 //db_conn.php
 $user = 'root';//資料庫使用者名稱
-$password = '0000';//資料庫的密碼
+$password = '';//資料庫的密碼
 
 try {
     $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8', $user, $password);

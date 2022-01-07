@@ -68,25 +68,14 @@
                                 <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
                                 <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
                                 <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
+                                <th><span class="RWD_show">ML</span><span class="RWD_noShow">MenuList</span></th>
                                 <th>edit</th>
                             </tr>
                             </thead>
                             <tbody>
                             
                             <?php
-
-                            $user = 'root';//資料庫使用者名稱
-                            $password = '';//資料庫的密碼
-                            try{
-                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                            }
-                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                Print "ERROR!:". $e->getMessage();
-                                die();
-                            }
+                            include_once "db_conn.php";
 
                             $query = ("select * from bfshop");//select * from employee where ID = ?
                             $stmt =  $db->prepare($query);
@@ -98,6 +87,12 @@
                                 <td>%s</td>
                                 <td>%s</td>
                                 <td>
+                                    <form action="foodlist.php" method="post">
+                                        <input type="hidden" name="BreakfastShopID" value="%s"></input>
+                                        <button type="submit" class="btn btn-secondary">菜單</button>
+                                    </form>
+                                </td>
+                                <td>
                                     <div id="%s" class="request_button">
                                         <span></span>
                                         <span></span>
@@ -107,7 +102,7 @@
                             </tr>';
                             for($i=0; $i<count($result); $i++)
                             {
-                                echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID']);
+                                echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID'],$result[$i]['BreakfastShopID']);
 
                             }
                             /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
