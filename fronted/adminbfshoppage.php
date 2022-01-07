@@ -51,8 +51,7 @@
 <!--style="background-color: #bfd1ec"  這個原放置於sidebar李-->
 <div class="container-fluid ">
     <div class="row" style="height: max-content">
-            <div class="">
-
+        <div class="">
                 <!--            店家資訊-->
                 <div class="grey_background admin1" style="display: ">
                     <div class="file_border" style="max-width: 1000px;">
@@ -77,11 +76,11 @@
                             <?php
                             include_once "db_conn.php";
 
-                            $query = ("select * from bfshop");//select * from employee where ID = ?
-                            $stmt =  $db->prepare($query);
-                            $error= $stmt->execute();//$error= $stmt->execute(array($no));
-                            $result = $stmt->fetchAll();
-                            $shop_list = 
+                        $query = ("select * from bfshop");//select * from employee where ID = ?
+                        $stmt = $db->prepare($query);
+                        $error = $stmt->execute();//$error= $stmt->execute(array($no));
+                        $result = $stmt->fetchAll();
+                        $shop_list =
                             '<tr>
                                 <td>%s</td>
                                 <td>%s</td>

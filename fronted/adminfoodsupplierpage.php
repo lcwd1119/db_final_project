@@ -24,7 +24,7 @@
 <!--Header-->
 <nav class="navbar navbar-expand-sm navbar-white bg-white fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="adminbfshoppage.php">早餐店資料庫系統</a>
+        <a class="navbar-brand" href="adminpage.php">早餐店資料庫系統</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <!--            <span class="navbar-toggler-icon"></span>-->
             <div class="toggle_button">
@@ -74,26 +74,14 @@
                         </thead>
                         <tbody>
                         <?php
-
-                            $user = 'root';//資料庫使用者名稱
-                            $password = '';//資料庫的密碼
-                            try{
-                                $db = new PDO('mysql:host=localhost;dbname=db_final_project;charset=utf8',$user,$password);
-                                //之後若要結束與資料庫的連線，則使用「$db = null;」
-                                $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                                $db->setAttribute(PDO::ATTR_EMULATE_PREPARES,false);
-                            }
-                            catch(PDOException $e){//若上述程式碼出現錯誤，便會執行以下動作
-                                Print "ERROR!:". $e->getMessage();
-                                die();
-                            }
+                        include_once "db_conn.php";
 
                             $query = ("select * from foodsupplier");
-                            $stmt =  $db->prepare($query);
-                            $error= $stmt->execute();//$error= $stmt->execute(array($no));
+                            $stmt = $db->prepare($query);
+                            $error = $stmt->execute();//$error= $stmt->execute(array($no));
                             $result = $stmt->fetchAll();
-                            $shop_list = 
-                            '<tr>
+                            $shop_list =
+                                '<tr>
                             <td>%d</td>
                             <td>%s</td>
                             <td>%s</td>
