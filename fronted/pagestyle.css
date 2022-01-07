@@ -361,7 +361,10 @@ input[type=number] {
   width: 40%;
 }
 .admin1 .file_border table thead tr th:nth-child(3) {
-  width: 40%;
+  width: 30%;
+}
+.admin1 .file_border table thead tr th:nth-child(3) {
+  width: 10%;
 }
 .admin1 .file_border table thead tr th:last-child {
   width: 10%;
@@ -554,6 +557,64 @@ input[type=number] {
   overflow: hidden;
 }
 .admin4 .file_border table tbody tr td:nth-child(5) {
+  text-align: left;
+}
+
+.foodlist {
+  padding-top: 100px;
+  display: flex;
+  justify-content: center;
+}
+.foodlist .file_border {
+  border-radius: 10px;
+  background-color: white;
+  padding: 20px;
+  width: calc(100% - 40px);
+  height: 95%;
+}
+.foodlist .file_border .file_header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.foodlist .file_border .file_header button {
+  position: relative;
+  left: calc(40% - 50px);
+}
+.foodlist .file_border table {
+  width: 100%;
+  position: relative;
+  margin: 0;
+  border-radius: 6px;
+}
+.foodlist .file_border table thead tr th {
+  text-align: center;
+  border-bottom: 3px solid #969696;
+  width: 30%;
+  border-radius: 6px;
+  min-width: 60px;
+}
+.foodlist .file_border table thead tr th:nth-child(2) {
+  width: 15%;
+}
+.foodlist .file_border table thead tr th:nth-child(3) {
+  width: 10%;
+}
+.foodlist .file_border table thead tr th:nth-child(4) {
+  width: 30%;
+  text-align: left;
+}
+.foodlist .file_border table tbody tr {
+  border-bottom: 3px solid #969696;
+}
+.foodlist .file_border table tbody tr td {
+  text-align: center;
+  width: auto;
+  overflow: hidden;
+}
+.foodlist .file_border table tbody tr td:nth-child(4) {
   text-align: left;
 }
 

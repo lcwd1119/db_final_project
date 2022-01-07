@@ -52,29 +52,29 @@
 <div class="container-fluid ">
     <div class="row" style="height: max-content">
         <div class="">
-
-            <!--            店家資訊-->
-            <div class="grey_background admin1" style="display: ">
-                <div class="file_border" style="max-width: 1000px;">
-                    <div class="file_header">
-                        <h1>店家資訊</h1>
-                        <button type="button" class="mb-2 btn btn-primary add">
-                            新增
-                        </button>
-                    </div>
-                    <table>
-                        <thead>
-                        <tr>
-                            <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
-                            <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
-                            <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
-                            <th>edit</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-
-                        <?php
-                        include_once "db_conn.php";
+                <!--            店家資訊-->
+                <div class="grey_background admin1" style="display: ">
+                    <div class="file_border" style="max-width: 1000px;">
+                        <div class="file_header">
+                            <h1>店家資訊</h1>
+                            <button type="button" class="mb-2 btn btn-primary add">
+                                新增
+                            </button>
+                        </div>
+                        <table>
+                            <thead>
+                            <tr>
+                                <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
+                                <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
+                                <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
+                                <th><span class="RWD_show">ML</span><span class="RWD_noShow">MenuList</span></th>
+                                <th>edit</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            
+                            <?php
+                            include_once "db_conn.php";
 
                         $query = ("select * from bfshop");//select * from employee where ID = ?
                         $stmt = $db->prepare($query);
@@ -86,6 +86,12 @@
                                 <td>%s</td>
                                 <td>%s</td>
                                 <td>
+                                    <form action="foodlist.php" method="post">
+                                        <input type="hidden" name="BreakfastShopID" value="%s"></input>
+                                        <button type="submit" class="btn btn-secondary">菜單</button>
+                                    </form>
+                                </td>
+                                <td>
                                     <div id="%s" class="request_button">
                                         <span></span>
                                         <span></span>
@@ -95,7 +101,7 @@
                             </tr>';
                             for($i=0; $i<count($result); $i++)
                             {
-                                echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID']);
+                                echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID'],$result[$i]['BreakfastShopID']);
 
                             }
                             /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
