@@ -24,7 +24,7 @@
 <!--Header-->
 <nav class="navbar navbar-expand-sm navbar-white bg-white fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home.php">早餐店資料庫系統</a>
+        <a class="navbar-brand" href="login_home.php">早餐店資料庫系統</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <!--            <span class="navbar-toggler-icon"></span>-->
             <div class="toggle_button">
@@ -55,17 +55,21 @@
             <!--            店家資訊-->
             <div class="grey_background admin1" style="display: ">
                 <div class="file_border" style="max-width: 1000px;">
+                    <?php
+                    session_start();
+                    echo sprintf('<h1>%s</h1>',$_SESSION['username']);
+                    ?>
                     <div class="file_header">
                         <h1>歡迎進入早餐店資料庫系統！</h1>
                     </div>
                     <div class="home_content">
                         <img src="home.png" width="400" height="200">
                         <div class="login_button">
-                            <button type="button" onclick="window.location.href='login.php'" class="mb-2 btn btn-primary">
-                                登入
+                            <button type="button" onclick="window.location.href='logout.php'" class="mb-2 btn btn-primary">
+                                登出
                             </button>
-                            <button type="button" onclick="window.location.href='register.php'" class="mb-2 btn btn-primary">
-                                註冊
+                            <button type="button" onclick="window.location.href='edit_account.php'" class="mb-2 btn btn-primary">
+                                修改
                             </button>
                         </div>
                     </div>

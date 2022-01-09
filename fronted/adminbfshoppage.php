@@ -1,3 +1,14 @@
+<?php
+session_start();
+include_once "db_conn.php";
+if(isset($_SESSION["hasSignedIn"]) && $_SESSION["hasSignedIn"]==true){
+    //echo 'user_id:'.$_SESSION["user_id"].'</br>';
+    //echo 'username:'.$_SESSION["username"].'</br>';
+}else{
+    echo '<script>alert("請先登入!");</script>';
+    echo '<script>window.location.href="home.php";</script>';
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,7 +35,7 @@
 <!--Header-->
 <nav class="navbar navbar-expand-sm navbar-white bg-white fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="adminbfshoppage.php">早餐店資料庫系統</a>
+        <a class="navbar-brand" href="login_home.php">早餐店資料庫系統</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
             <!--            <span class="navbar-toggler-icon"></span>-->
             <div class="toggle_button">

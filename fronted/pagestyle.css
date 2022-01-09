@@ -1085,5 +1085,13 @@ input[type=number] {
       height: auto;
   }*/
 }
+.home_content{
+text-align: center;
+  line-height: 20;
+}
+.login_button{
+  line-height: 4;
+  letter-spacing: 70px;
+}
 
 /*# sourceMappingURL=pagestyle.css.map */
