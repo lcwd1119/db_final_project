@@ -164,7 +164,7 @@
                             <input type="text" class="form-control" id="COO" placeholder="Enter email" name="COO">
                             <label for="COO">COO</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">新增</button>
+                        <button type="submit" class="btn btn-primary">修改</button>
                     </form>
                 </div>
             </div>

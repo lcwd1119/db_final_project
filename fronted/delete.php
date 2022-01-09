@@ -3,7 +3,7 @@
                         //header("Content-type:text/html;charset=utf-8");
                         //include_once "adminsupplierpage.php";
                         
-                        include_once "db_conn.php"
+                        include_once "db_conn.php";
                         $Table = $_POST['table'];
                         if($Table == "foodsupplier"){
                             $FoodID = $_POST['FoodID'];

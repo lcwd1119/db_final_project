@@ -52,29 +52,29 @@
 <div class="container-fluid ">
     <div class="row" style="height: max-content">
         <div class="">
-                <!--            店家資訊-->
-                <div class="grey_background admin1" style="display: ">
-                    <div class="file_border" style="max-width: 1000px;">
-                        <div class="file_header">
-                            <h1>店家資訊</h1>
-                            <button type="button" class="mb-2 btn btn-primary add">
-                                新增
-                            </button>
-                        </div>
-                        <table>
-                            <thead>
-                            <tr>
-                                <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
-                                <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
-                                <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
-                                <th><span class="RWD_show">ML</span><span class="RWD_noShow">MenuList</span></th>
-                                <th>edit</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            
-                            <?php
-                            include_once "db_conn.php";
+            <!--            店家資訊-->
+            <div class="grey_background admin1" style="display: ">
+                <div class="file_border" style="max-width: 1000px;">
+                    <div class="file_header">
+                        <h1>店家資訊</h1>
+                        <button type="button" class="mb-2 btn btn-primary add">
+                            新增
+                        </button>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th><span class="RWD_show">BSID</span><span class="RWD_noShow">BreakfastShopID</span></th>
+                            <th><span class="RWD_show">SN</span><span class="RWD_noShow">ShopName</span></th>
+                            <th><span class="RWD_show">BH</span><span class="RWD_noShow">BusinessHour</span></th>
+                            <th><span class="RWD_show">ML</span><span class="RWD_noShow">MenuList</span></th>
+                            <th>edit</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+
+                        <?php
+                        include_once "db_conn.php";
 
                         $query = ("select * from bfshop");//select * from employee where ID = ?
                         $stmt = $db->prepare($query);
@@ -99,84 +99,92 @@
                                     </div>
                                 </td>
                             </tr>';
-                            for($i=0; $i<count($result); $i++)
-                            {
-                                echo sprintf($shop_list,$result[$i]['BreakfastShopID'],$result[$i]['ShopName'],$result[$i]['BusinessHour'],$result[$i]['BreakfastShopID'],$result[$i]['BreakfastShopID']);
+                        for ($i = 0; $i < count($result); $i++) {
+                            echo sprintf($shop_list, $result[$i]['BreakfastShopID'], $result[$i]['ShopName'], $result[$i]['BusinessHour'], $result[$i]['BreakfastShopID'], $result[$i]['BreakfastShopID']);
 
-                            }
-                            /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
-                            $t1_SN='美而美基隆中正店';
-                            $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
-                            ?>
-                            </tbody>
-                        </table>
-                    </div>
+                        }
+                        /*$t1_BSID='BFS<span class="RWD_show"></span>-01';
+                        $t1_SN='美而美基隆中正店';
+                        $t1_BH='5:00am<span class="RWD_show"></span>~1:00pm';*/
+                        ?>
+                        </tbody>
+                    </table>
                 </div>
-                <!--            新增頁面    -->
-                <div class="grey_background admin4 addpage" style="display: none">
-                    <div class="file_border" style="max-width: 800px;">
-                        <form action="postget_request.php" method="post">
-                        <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="bfshop" readonly>
-                            <label for="table">Table</label>
-                        </div>
-                        <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter email" name="BreakfastShopID">
-                            <label for="BreakfastShopID">BreakfastShopID</label>
-                        </div>
-                        <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="ShopName" placeholder="Enter password" name="ShopName">
-                            <label for="ShopName">ShopName</label>
-                        </div>
-                        <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="BusinessHour" placeholder="Enter password" name="BusinessHour">
-                            <label for="BusinessHour">BusinessHour</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">新增</button>
-                    </form>
-                    </div>
-                </div>
-                <!--            修改頁面    -->
-                <div class="grey_background admin4 editpage" style="display: none">
-                    <div class="file_border" style="max-width: 800px;">
-                        <form action="edit.php" method="post">
-                        <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table" value="bfshop" readonly>
-                            <label for="table">Table</label>
-                        </div>
-                        <div class="form-floating mb-3 mt-3">
-                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter email" name="BreakfastShopID" readonly>
-                            <label for="BreakfastShopID">BreakfastShopID</label>
-                        </div>
-                        <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="ShopName" placeholder="Enter password" name="ShopName">
-                            <label for="ShopName">ShopName</label>
-                        </div>
-                        <div class="form-floating mt-3 mb-3">
-                            <input type="text" class="form-control" id="BusinessHour" placeholder="Enter password" name="BusinessHour">
-                            <label for="BusinessHour">BusinessHour</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary">新增</button>
-                    </form>
-                    </div>
-                </div>
-                <!--            操作按鈕點擊後操作頁面-->
-                <div class="card card_request"style="display: none">
-                    <div class="card_title">
-                        <h4>操作選單</h4>
-                    </div>
-                    <div class="card_body">
-                        <button type="button" class="mb-2 btn btn-primary select_table_button edit_btn_shop">修改</button>
-                        <form action="delete.php" method="post">
-                            <input type="hidden" name="table" value="bfshop" >
-                            <input class="primarykey" type="hidden" name="BreakfastShopID" >
-                            <button type="submit" class="mb-2 btn btn-primary select_table_button delete_btn_shop">刪除</button>
-                        </form>
-                        <button type="button" class="mb-2 btn btn-primary select_table_button ">離開</button>
-                    </div>
-                </div>
-                <div class="black_background" style="display: none"></div>
             </div>
+            <!--            新增頁面    -->
+            <div class="grey_background admin4 addpage" style="display: none">
+                <div class="file_border" style="max-width: 800px;">
+                    <form action="postget_request.php" method="post">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table"
+                                   value="bfshop" readonly>
+                            <label for="table">Table</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter email"
+                                   name="BreakfastShopID">
+                            <label for="BreakfastShopID">BreakfastShopID</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="ShopName" placeholder="Enter password"
+                                   name="ShopName">
+                            <label for="ShopName">ShopName</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="BusinessHour" placeholder="Enter password"
+                                   name="BusinessHour">
+                            <label for="BusinessHour">BusinessHour</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">新增</button>
+                    </form>
+                </div>
+            </div>
+            <!--            修改頁面    -->
+            <div class="grey_background admin4 editpage" style="display: none">
+                <div class="file_border" style="max-width: 800px;">
+                    <form action="edit.php" method="post">
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="table" placeholder="Enter email" name="table"
+                                   value="bfshop" readonly>
+                            <label for="table">Table</label>
+                        </div>
+                        <div class="form-floating mb-3 mt-3">
+                            <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter email"
+                                   name="BreakfastShopID" readonly>
+                            <label for="BreakfastShopID">BreakfastShopID</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="ShopName" placeholder="Enter password"
+                                   name="ShopName">
+                            <label for="ShopName">ShopName</label>
+                        </div>
+                        <div class="form-floating mt-3 mb-3">
+                            <input type="text" class="form-control" id="BusinessHour" placeholder="Enter password"
+                                   name="BusinessHour">
+                            <label for="BusinessHour">BusinessHour</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">修改</button>
+                    </form>
+                </div>
+            </div>
+            <!--            操作按鈕點擊後操作頁面-->
+            <div class="card card_request" style="display: none">
+                <div class="card_title">
+                    <h4>操作選單</h4>
+                </div>
+                <div class="card_body">
+                    <button type="button" class="mb-2 btn btn-primary select_table_button edit_btn_shop">修改</button>
+                    <form action="delete.php" method="post">
+                        <input type="hidden" name="table" value="bfshop">
+                        <input class="primarykey" type="hidden" name="BreakfastShopID">
+                        <button type="submit" class="mb-2 btn btn-primary select_table_button delete_btn_shop">刪除
+                        </button>
+                    </form>
+                    <button type="button" class="mb-2 btn btn-primary select_table_button ">離開</button>
+                </div>
+            </div>
+            <div class="black_background" style="display: none"></div>
+        </div>
     </div>
 </div>
 <!--回到最上層按鈕-->

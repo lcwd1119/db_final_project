@@ -118,7 +118,7 @@
                         </div>
                         <div class="form-floating mb-3 mt-3">
                             <input type="text" class="form-control" id="FoodID" placeholder="Enter email" name="FoodID">
-                            <label for="FoodID">FoodID</label>
+                            <label for="FoodID">FoodID(可不填)</label>
                         </div>
                         <div class="form-floating mt-3 mb-3">
                             <input type="text" class="form-control" id="BreakfastShopID" placeholder="Enter password" name="BreakfastShopID">
@@ -168,7 +168,7 @@
                             <input type="text" class="form-control" id="Remark" placeholder="Enter email" name="Remark">
                             <label for="Remark">Remark</label>
                         </div>
-                        <button type="submit" class="btn btn-primary">新增</button>
+                        <button type="submit" class="btn btn-primary">修改</button>
                     </form>
                 </div>
             </div>
