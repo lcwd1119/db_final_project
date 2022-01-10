@@ -189,7 +189,7 @@ if(isset($_SESSION["hasSignedIn"]) && $_SESSION["hasSignedIn"]==true){
                         <form action="delete.php" method="post">
                             <input type="hidden" name="table" value="foodsupplier" >
                             <input class="primarykey" type="hidden" name="FoodID" >
-                            <button type="button" class="mb-2 btn btn-primary select_table_button delete_btn_supplier">刪除</button>
+                            <button type="submit" class="mb-2 btn btn-primary select_table_button delete_btn_supplier">刪除</button>
                         </form>
                         <button type="button" class="mb-2 btn btn-primary select_table_button ">離開</button>
                 </div>
